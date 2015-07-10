@@ -13,4 +13,10 @@
           select * from t_user
         ]]>
     </select>
+
+    <insert id="insertUserInfo" parameterType="com.xbzheng.model.UserInfo">
+        <![CDATA[
+          INSERT INTO T_USER(ID, USERNAME, PASSWORD) VALUES(#{id},#{username},#{password})
+        ]]>
+    </insert>
 </mapper>

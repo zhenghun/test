@@ -24,7 +24,7 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public boolean insertUserInfo(UserInfo userInfo) {
-        sqlSession.insert("findAllUserInfo", userInfo);
+        sqlSession.insert("insertUserInfo", userInfo);
         return false;
     }
 }

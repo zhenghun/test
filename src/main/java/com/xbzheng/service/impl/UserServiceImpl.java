@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,24 +21,10 @@ public class UserServiceImpl implements IUserService {
     private IUserDao userDao;
 
     public List<UserInfo> findAll() {
-        List<UserInfo> reList = null;
-        try{
-            reList = userDao.findAll();
-            LOG.debug("User info select successfuly:"+(reList !=null ? reList.size():0));
-        }catch (Exception e){
-            LOG.debug(UserServiceImpl.class+":", e.getMessage());
-            e.printStackTrace();
-        }
-        return reList;
+        return userDao.findAll();
     }
 
     public boolean insertUserInfo(UserInfo userInfo) {
-        boolean insertSuccess = false;
-        try{
-            insertSuccess = userDao.insertUserInfo(userInfo);
-        }catch (Exception e){
-            LOG.debug(UserServiceImpl.class+":", e.getMessage());
-        }
-        return insertSuccess;
+        return userDao.insertUserInfo(userInfo);
     }
 }

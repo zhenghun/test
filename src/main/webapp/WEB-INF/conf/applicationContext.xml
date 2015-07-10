@@ -14,9 +14,12 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+       <!--作用是将注解的bean自动装载入spring容器。和spring mvc中的自动扫描会重复-->
        <context:component-scan base-package="com.xbzheng"/>
+       <!--自动装载属性文件-->
        <context:property-placeholder location="classpath:jdbc.properties"/>
 
+       <!--配置数据源 使用c3p0-->
        <bean id="dataSorce" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
               <property name="driverClass" value="${jdbc.driver}"/>
               <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -24,7 +27,9 @@
               <property name="password" value="${jdbc.password}"/>
        </bean>
 
+       <!--配置mybatis的SqlSessionFactory-->
        <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <!--添加数据源属性-->
               <property name="dataSource" ref="dataSorce"/>
               <!--指定mybatis的总配置文件-->
               <!--
@@ -34,6 +39,7 @@
               <property name="mapperLocations" value="classpath:com/xbzheng/model/*.xml"/>
        </bean>
 
+       <!--通过创建的sessionFactory来生成mybatis的SqlSession对象-->
        <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
               <constructor-arg index="0" ref="sessionFactory"/>
        </bean>
@@ -54,8 +60,11 @@
               </tx:attributes>
        </tx:advice>
 
+       <!--声明式事务配置-->
        <aop:config>
-              <aop:pointcut id="pointcut" expression="execution(* com.xbzheng..service..*(..))" />
+              <!--配置横切入点-->
+              <aop:pointcut id="pointcut" expression="execution(* com.xbzheng.service..*.*(..))" />
+              <!--配置切入点通知-->
               <aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice"/>
        </aop:config>
 </beans>

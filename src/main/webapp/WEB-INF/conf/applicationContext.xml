@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+       <context:property-placeholder location="classpath:jdbc.properties"/>
+
+       <bean id="dataSorce" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <property name="driverClass" value="${jdbc.driver}"/>
+              <property name="jdbcUrl" value="${jdbc.url}"/>
+              <property name="user" value="${jdbc.user}"/>
+              <property name="password" value="${jdbc.password}"/>
+       </bean>
+
+       <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSorce"/>
+              <!--指定mybatis的总配置文件-->
+              <!--
+              <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+              -->
+              <!--不用指定mybatis的总配置文件，和configLocation选其一即可-->
+              <property name="mapperLocations" value="classpath:com/xbzheng/model/*.xml"/>
+       </bean>
+
+       <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+              <constructor-arg index="0" ref="sessionFactory"/>
+       </bean>
+
+       <!--配置事务传播属性-->
+       <tx:advice id="txAdvice">
+              <tx:attributes>
+                     <tx:method name="add*" propagation="REQUIRED"/>
+                     <tx:method name="insert*" propagation="REQUIRED"/>
+                     <tx:method name="delete*" propagation="REQUIRED"/>
+                     <tx:method name="remove*" propagation="REQUIRED"/>
+                     <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
+              </tx:attributes>
+       </tx:advice>
+
+       <aop:config>
+              <aop:pointcut id="pointcut" expression="execution(* com.xbzheng..service..*(..))" />
+              <aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice"/>
+       </aop:config>
+</beans>

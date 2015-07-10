@@ -19,12 +19,10 @@ public class UserDaoImpl implements IUserDao {
     //private SqlSessionFactory sessionFactory;
     private SqlSessionTemplate sqlSession;
 
-    @Override
     public List<UserInfo> findAll(){
-        return null;
+        return sqlSession.selectList("findAllUserInfo");
     }
 
-    @Override
     public boolean insertUserInfo(UserInfo userInfo) {
         sqlSession.insert("findAllUserInfo", userInfo);
         return false;

@@ -23,8 +23,10 @@ public class UserServiceImpl implements IUserService {
         List<UserInfo> reList = null;
         try{
             reList = userDao.findAll();
+            LOG.debug("User info select successfuly:"+(reList !=null ? reList.size():0));
         }catch (Exception e){
             LOG.debug(UserServiceImpl.class+":", e.getMessage());
+            e.printStackTrace();
         }
         return reList;
     }

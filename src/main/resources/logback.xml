@@ -7,8 +7,9 @@
         </layout>
     </appender>
 
-    <logger name="com.xbzheng" level="debug"/>
-
+    <logger name="com.xbzheng" level="debug">
+        <appender-ref ref="STDOUT"/>
+    </logger>
 
     <root level="debug">
         <appender-ref ref="STDOUT" />

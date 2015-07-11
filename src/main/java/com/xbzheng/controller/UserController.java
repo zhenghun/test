@@ -30,6 +30,7 @@ public class UserController {
         }catch (Exception e){
             LOG.debug(e.getMessage());
         }
-        return "user/user-list";
+       // return "user/user-list";
+        return "userinfo.list";
     }
 }

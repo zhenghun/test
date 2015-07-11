@@ -19,7 +19,16 @@
        -->
 
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+              <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
               <property name="prefix" value="/WEB-INF/pages/"/>
               <property name="suffix" value=".jsp"/>
        </bean>
+
+        <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+            <property name="definitions">
+                <list>
+                    <value>/WEB-INF/conf/tiles3-cofig.xml</value>
+                </list>
+            </property>
+        </bean>
 </beans>

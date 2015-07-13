@@ -6,7 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/7/10.
@@ -18,14 +21,10 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping("findAll.do")
-    public String findAllUser(){
+    public String findAllUser(Model model){
         try{
-            userService.findAll();
-            UserInfo userInfo = new UserInfo();
-            userInfo.setId(2);
-            userInfo.setPassword("123");
-            userInfo.setUsername("zheng");
-            userService.insertUserInfo(userInfo);
+            List<UserInfo> userInfoList = userService.findAll();
+            model.addAttribute("userInfoList", userInfoList);
             LOG.debug("Find all user info successfully!");
         }catch (Exception e){
             LOG.debug(e.getMessage());

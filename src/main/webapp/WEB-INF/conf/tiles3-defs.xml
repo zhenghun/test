@@ -1,0 +1,23 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <!--用于引入公共的js、css等内容-->
+    <definition name=".baseLayout">
+        <put-attribute name="header" value="/WEB-INF/pages/util/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/pages/util/footer.jsp"/>
+    </definition>
+
+    <!--整个前端页面骨架,只有body部分不一样随时改变-->
+    <definition name=".archLayout" extends=".baseLayout" template="/WEB-INF/pages/index.jsp">
+        <put-attribute name="page_header" value=""/>
+        <put-attribute name="leftMenu" value=""/>
+        <put-attribute name="navigation" value=""/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="page_footer" value=""/>
+    </definition>
+    <!--page_header/page_footer是页面的头部和底部显示内容-->
+    <definition name=".user.list" extends=".archLayout">
+        <put-attribute name="body" value=""/>
+    </definition>
+</tiles-definitions>

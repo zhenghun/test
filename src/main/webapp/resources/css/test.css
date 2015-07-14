@@ -1,0 +1,22 @@
+#footer{
+    margin: 8px 0 0 0;
+    padding: 4px 0 0 0;
+    font-size: 11px;
+    text-align: center;
+}
+#switchBar{
+    width: 6px;
+    margin: 0 1px;
+    cursor: pointer;
+    float: left;
+}
+.close:hover{
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+#switchBar.close{
+    background-position: 1px center;
+    opacity: .5;
+    filter: alpha(opacity=50)
+    background: #efefef url("../resources/images/switchBar.png") no-repeat -29px center;
+}

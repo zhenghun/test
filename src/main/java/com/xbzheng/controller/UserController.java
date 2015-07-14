@@ -30,6 +30,6 @@ public class UserController {
             LOG.debug(e.getMessage());
         }
        // return "user/user-list";
-        return "userinfo.list";
+        return ".user.list";
     }
 }

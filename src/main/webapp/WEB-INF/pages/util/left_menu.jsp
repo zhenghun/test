@@ -13,7 +13,11 @@
         <a class="accordion-toggle"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>test1</a>
       </div>
       <div id="collapseOne" class="panel-collapse in" style="height: auto;">
-        <div class="panel-body"><span class="func" datatype="html" dataLink="${pageContext.request.contextPath}/index.jsp" target="mainFrame">test home</span></div>
+        <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a class="func" datatype="html" dataLink="${pageContext.request.contextPath}/test.html" target="mainFrame">test2</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="panel panel-default">
@@ -23,7 +27,7 @@
       <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
         <div class="panel-body">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">SQL基础</a></li>
+            <li><a class="func" datatype="html" dataLink="${pageContext.request.contextPath}/index.jsp" target="mainFrame">SQL基础</a></li>
             <li><a href="#">Oracle</a></li>
             <li><a href="#">MySQL</a></li>
           </ul>

@@ -1,14 +1,24 @@
-#footer{
-    margin: 8px 0 0 0;
-    padding: 4px 0 0 0;
-    font-size: 11px;
+#footer {
     text-align: center;
+    border-top: 2px solid #5ACF00;
+    padding: 10px;
+    font-size: 9pt;
 }
 #switchBar{
+    float: left;
     width: 6px;
     margin: 0 1px;
     cursor: pointer;
-    float: left;
+}
+#switchBar.open{
+    background-position: 1px center;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    background: #efefef url("../images/switchBar.png") no-repeat -29px center;
+}
+.open:hover{
+    opacity: 0.8;
+    filter: alpha(opacity=80);
 }
 .close:hover{
     opacity: 0.8;
@@ -17,6 +27,22 @@
 #switchBar.close{
     background-position: 1px center;
     opacity: .5;
-    filter: alpha(opacity=50)
-    background: #efefef url("../resources/images/switchBar.png") no-repeat -29px center;
+    filter: alpha(opacity=50);
+    background: #efefef url("../images/switchBar.png") no-repeat 0px center;
+}
+#layout {
+    margin: 0px;
+    padding-left: 0px;
+}
+#left-menu{
+    padding: 0px;
+}
+#bodyContainer{
+    margin: 0px;
+}
+#content{
+    padding: 0px;
+}
+.textAlign{
+    text-align: center;
 }

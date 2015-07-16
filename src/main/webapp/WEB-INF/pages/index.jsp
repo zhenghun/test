@@ -6,7 +6,6 @@
         <tiles:insertAttribute name="header"/>
     </header>
     <body>
-
         <div class="container-fluid" id="layout">
             <tiles:insertAttribute name="page_header"/>
             <div class="row" style="width:100%; height: 60px;"></div>

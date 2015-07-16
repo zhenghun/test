@@ -1,0 +1,34 @@
+.form-signin{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0px auto;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+}
+.form-signin-header{
+    font-family: Helvetica, Georgia, Arial, sans-serif, ºÚÌå;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #0663a2;
+}
+body{
+    text-align: center;
+}
+.alert{
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+.alert-error{
+    color: #bd4247;
+    background-color: #f2bdb1;
+    border-color: #f0a5a4;
+}
+label.error{
+    background: none;
+    width: 270px;
+    font-weight: normal;
+    color: inherit;
+    margin: 0;
+}

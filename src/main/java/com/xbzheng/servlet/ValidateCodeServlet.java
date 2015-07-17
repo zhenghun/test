@@ -25,7 +25,7 @@ public class ValidateCodeServlet extends HttpServlet {
     private int height = 26;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        doPost(req, resp);
     }
 
     @Override

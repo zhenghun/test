@@ -21,10 +21,18 @@
             <param-value>/WEB-INF/conf/dispatcher-servlet.xml</param-value>
         </init-param>
     </servlet>
+    <servlet>
+        <servlet-name>validateCode</servlet-name>
+        <servlet-class>com.xbzheng.servlet.ValidateCodeServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validateCode</servlet-name>
+        <url-pattern>/servlet/validateCodeServlet</url-pattern>
     </servlet-mapping>
   <display-name>Archetype Created Web Application</display-name>
 </web-app>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <!--单点登录-->
+       <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+              <property name="securityManager" ref="securityManager"/>
+              <!--loginUrl是登录CAS服务端的地址-->
+              <property name="loginUrl" value="/admin/login"/>
+              <property name="successUrl" value=""/>
+              <property name="filterChainDefinitions" >
+                     <value>
+                            /login=anon
+                            /user/**=authc
+                     </value>
+              </property>
+       </bean>
+
+       <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+              <property name="realm" ref="MysqlRealm"/>
+              <property name="sessionManager" ref="sessionManager"/>
+              <property name="cacheManager" ref="cacheManager"/>
+       </bean>
+
+       <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+              <property name="sessionIdCookie" ref="sessionIdCookie"/>
+       </bean>
+
+       <bean id="sessionDao" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+
+       </bean>
+       <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"/>
+</beans>

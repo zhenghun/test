@@ -6,8 +6,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet"/>
 </header>
 <body>
-    <a href="findAll.do">go to</a>
-    <div style="height: 80px;padding-top: 20px;">
+    <div style="height: 120px;padding-top: 20px;">
         <div id="messageBox" class="alert alert-error" style="display: none;"><button data-dismiss="alert" class="close">×</button>
             <label id="loginError" class="error"></label>
         </div>
@@ -31,7 +30,7 @@
             <div class="form-group">
                 <div>
                     <label>
-                        <input type="checkbox"> 记住我
+                        <input type="checkbox" name="rememberMe"> 记住我
                     </label>
                     <label style="float: right;">
                         <input type="text" id="validateCode" name="validateCode" maxlength="5" placeholder="验证码" required style="font-weight:bold;width:50px;"/>
@@ -73,8 +72,6 @@
                 return false;
             });
         });
-
-
     </script>
 </body>
 </html>

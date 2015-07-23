@@ -1,14 +1,12 @@
 package com.xbzheng.service.impl;
 
-import com.xbzheng.dao.user.IUserDao;
-import com.xbzheng.model.UserInfo;
+import com.xbzheng.model.User;
 import com.xbzheng.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +18,11 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
 
-    public List<UserInfo> findAll() {
+    public List<User> findAll() {
         return userDao.findAll();
     }
 
-    public boolean insertUserInfo(UserInfo userInfo) {
+    public boolean insertUserInfo(User userInfo) {
         return userDao.insertUserInfo(userInfo);
     }
 }

@@ -20,6 +20,9 @@
     -->
     <defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120"
                   overflowToDisk="false" diskPersistent="false" diskExpiryThreadIntervalSeconds="120"/>
+
+    <!-- 用户缓存 -->
+    <cache name="userCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/>
     <!--
             如果需要自定义cache：那么需要确保：
                 eternal="true"

@@ -1,6 +1,6 @@
 package com.xbzheng.service;
 
-import com.xbzheng.model.UserInfo;
+import com.xbzheng.model.User;
 
 import java.util.List;
 
@@ -8,6 +8,6 @@ import java.util.List;
  * Created by Administrator on 2015/7/10.
  */
 public interface IUserService {
-    public List<UserInfo> findAll();
-    public boolean insertUserInfo(UserInfo userInfo);
+    public List<User> findAll();
+    public boolean insertUserInfo(User userInfo);
 }

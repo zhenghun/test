@@ -1,6 +1,6 @@
 package com.xbzheng.controller;
 
-import com.xbzheng.model.UserInfo;
+import com.xbzheng.model.User;
 import com.xbzheng.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class UserController {
     @RequestMapping("findAll.do")
     public String findAllUser(Model model){
         try{
-            List<UserInfo> userInfoList = userService.findAll();
+            List<User> userInfoList = userService.findAll();
             model.addAttribute("userInfoList", userInfoList);
             LOG.debug("Find all user info successfully!");
         }catch (Exception e){

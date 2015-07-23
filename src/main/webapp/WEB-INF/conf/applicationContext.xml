@@ -40,7 +40,7 @@
        </bean>
 
        <!--通过创建的sessionFactory来生成mybatis的SqlSession对象-->
-       <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+       <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
               <constructor-arg index="0" ref="sessionFactory"/>
        </bean>
 

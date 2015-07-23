@@ -13,7 +13,7 @@
     </div>
     <h1 class="form-signin-header">Test 快速开发平台</h1>
     <div class="container" style="text-align: left">
-        <form class="form-signin" method="post" id="loginForm" action="#" role="form">
+        <form class="form-signin" method="post" id="loginForm" action="" role="form">
             <h2>登录</h2>
             <div class="form-group">
                 <div>

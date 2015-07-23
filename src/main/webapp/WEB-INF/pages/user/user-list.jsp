@@ -1,4 +1,4 @@
-<%@ page import="com.xbzheng.model.UserInfo" %>
+<%@ page import="com.xbzheng.model.User" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
@@ -17,7 +17,7 @@
 </head>
 <body>
   <%
-    List<UserInfo> userInfo = (List<UserInfo>)request.getAttribute("userInfoList");
+    List<User> userInfo = (List<User>)request.getAttribute("userInfoList");
    // System.out.println(userInfo);
   %>
   ${userInfoList}

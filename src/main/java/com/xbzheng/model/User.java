@@ -4,12 +4,12 @@ package com.xbzheng.model;
  * Created by Administrator on 2015/7/9.
  * 存放用户信息
  */
-public class UserInfo {
+public class User {
     private int id;
     private String username;
     private String password;
 
-    public UserInfo(){
+    public User(){
 
     }
 
@@ -39,7 +39,7 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
+        return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

@@ -1,5 +1,6 @@
 package com.xbzheng.service.impl;
 
+import com.xbzheng.dao.IUserDao;
 import com.xbzheng.model.User;
 import com.xbzheng.service.IUserService;
 import org.slf4j.Logger;

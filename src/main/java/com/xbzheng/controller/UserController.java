@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2015/7/10.
- */
 @Controller
 public class UserController {
     private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
@@ -21,14 +18,10 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping("findAll.do")
-    public String findAllUser(Model model){
-        try{
-            List<User> userInfoList = userService.findAll();
-            model.addAttribute("userInfoList", userInfoList);
-            LOG.debug("Find all user info successfully!");
-        }catch (Exception e){
-            LOG.debug(e.getMessage());
-        }
+    public String findAllUser(final Model model){
+        final List<User> userInfoList = userService.findAll();
+        model.addAttribute("userInfoList", userInfoList);
+        LOG.debug("Find all user info successfully!");
        // return "user/user-list";
         return ".user.list";
     }

@@ -17,6 +17,8 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 /**
  * Created by Administrator on 2015/7/20.
  */
@@ -55,13 +57,50 @@ public class MysqlRealm  extends AuthorizingRealm{
             if(Global.NO.equals(user.getLoginFlag())){
                 throw new AuthenticationException("msg:¸ÃÒÑÕÊºÅ½ûÖ¹µÇÂ¼.");
             }
-            return SimpleAuthenticationInfo(new Principal());
+            return SimpleAuthenticationInfo();
         }else{
             return null;
         }
         return null;
     }
 
+    public static class Principal implements Serializable{
+        private static final long serialVersionUID = 1L;
+
+        private String id;
+        private String name;
+        private String loginName; // µÇÂ¼Ãû
+
+        public Principal(User user){
+            this.id = user.getId();
+            this.loginName = user.getLoginName();
+            this.name = user.getName();
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getLoginName() {
+            return loginName;
+        }
+
+        public void setLoginName(String loginName) {
+            this.loginName = loginName;
+        }
+    }
 
     public SystemService getSystemService(){
         if(systemService == null){

@@ -36,9 +36,16 @@
               <property name="configLocation" value="classpath:sqlMapConfig.xml"/>
               -->
               <!--不用指定mybatis的总配置文件，和configLocation选其一即可-->
-              <property name="mapperLocations" value="classpath:com/xbzheng/model/*.xml"/>
+              <property name="mapperLocations" value="classpath:com/xbzheng/model/*.map.xml"/>
        </bean>
 
+       <!-- 扫描basePackage下所有以@MyBatisDao注解的接口，MyBatisDao自定义注解
+       <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+              <property name="basePackage" value="com.xbzheng"/>
+              <property name="annotationClass" value="com.xbzheng.common.persistence.annotation.MyBatisDao"/>
+       </bean>
+       -->
        <!--通过创建的sessionFactory来生成mybatis的SqlSession对象-->
        <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
               <constructor-arg index="0" ref="sessionFactory"/>
@@ -67,4 +74,10 @@
               <!--配置切入点通知-->
               <aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice"/>
        </aop:config>
+
+       <!-- 配置该bean之后就不需要实现dao接口，spring 会自动为dao接口创建相应的实现类，通过代理反射的方式 -->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <!--basePackage指定要扫描的包，在此包之下的映射器都会被搜索到。可指定多个包，包与包之间用逗号或分号分隔-->
+              <property name="basePackage" value="com.xbzheng.dao"></property>
+       </bean>
 </beans>

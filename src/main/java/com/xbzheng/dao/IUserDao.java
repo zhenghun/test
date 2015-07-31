@@ -3,11 +3,12 @@ package com.xbzheng.dao;
 import com.xbzheng.common.persistence.ICrudDao;
 import com.xbzheng.common.persistence.annotation.MyBatisDao;
 import com.xbzheng.model.User;
+import org.springframework.stereotype.Repository;
 
 /**
- * Created by hun on 2015-07-23.
+ * @Created by hun on 2015-07-23.
  */
-@MyBatisDao
+@Repository
 public interface IUserDao<T> extends ICrudDao<User> {
 
     public User getUserByLoginName(String name);

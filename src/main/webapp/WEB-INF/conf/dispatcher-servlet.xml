@@ -21,9 +21,14 @@
         <mvc:default-servlet-handler/>
         <mvc:resources mapping="/resources/**" location="/resources/"/>
 
+        <!--
         <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
             <property name="order" value="1"/>
             <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+        </bean>
+        -->
+        <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+            <property name="order" value="1"/>
         </bean>
 
         <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -38,6 +43,11 @@
             <property name="order" value="2"/>
             <property name="prefix" value="/WEB-INF/pages/"/>
             <property name="suffix" value=".jsp"/>
+       </bean>
+
+       <!-- 支持Shiro对Controller的方法级AOP安全控制 begin-->
+       <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+           <property name="proxyTargetClass" value="true" />
        </bean>
 
 </beans>

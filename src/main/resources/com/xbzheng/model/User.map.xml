@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xbzheng.dao.IUserDao">
+        <resultMap id="user" type="com.xbzheng.model.User">
+                <id property="id" column="id" />
+                <result property="userName" column="username"/>
+                <result property="loginName" column="login_name"/>
+                <result property="loginFlag" column="login_flag"/>
+        </resultMap>
+        <select id="findAllList" resultMap="user" parameterType="com.xbzheng.model.User">
+                <![CDATA[
+                  SELECT * FROM T_USER
+                ]]>
+        </select>
+        <select id="getUserByLoginName" resultMap="user" parameterType="com.xbzheng.model.User">
+                <![CDATA[
+                  SELECT * FROM T_USER T WHERE T.USERNAME = #{userName}
+                ]]>
+        </select>
+</mapper>

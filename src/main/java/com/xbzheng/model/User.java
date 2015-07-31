@@ -1,57 +1,69 @@
 package com.xbzheng.model;
 
+import java.io.Serializable;
+
 /**
- * Created by Administrator on 2015/7/9.
- * 存放用户信息
+ * @author hun
  */
-public class User {
-    private int id;
-    private String username;
+public class User implements Serializable{
+    private static final long serialVersionUID = 1L;
+    private String id;
+    private String userName;
     private String password;
+    private String loginName;
     private String loginFlag;
 
     public User(){
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(final String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(final String loginName) {
+        this.loginName = loginName;
     }
 
     public String getLoginFlag() {
         return loginFlag;
     }
 
-    public void setLoginFlag(String loginFlag) {
+    public void setLoginFlag(final String loginFlag) {
         this.loginFlag = loginFlag;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", loginName='" + loginName + '\'' +
                 '}';
     }
 }

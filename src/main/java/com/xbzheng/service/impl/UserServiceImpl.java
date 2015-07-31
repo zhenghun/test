@@ -11,19 +11,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/7/10.
+ * @Created by Administrator on 2015/7/10.
  */
 @Service
 public class UserServiceImpl implements IUserService {
     private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
-    private IUserDao userDao;
+    private IUserDao<User> userDao;
 
-    public List<User> findAll() {
-        return userDao.findAll();
-    }
-
-    public boolean insertUserInfo(User userInfo) {
-        return userDao.insertUserInfo(userInfo);
+    @Override
+    public List<User> findAll(final User user) {
+        return userDao.findAllList(user);
     }
 }

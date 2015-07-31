@@ -1,4 +1,4 @@
-<ehcache>
+<ehcache name="defaultCache" updateCheck="false">
     <diskStore path="../temp/test/ehcache"/>
     <!--缺省配置。 这些将用于缓存以编程方式创建缓存管理器
 
@@ -19,7 +19,7 @@
 
     -->
     <defaultCache maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120"
-                  overflowToDisk="false" diskPersistent="false" diskExpiryThreadIntervalSeconds="120"/>
+                  overflowToDisk="true" diskPersistent="false" diskExpiryThreadIntervalSeconds="120"/>
 
     <!-- 用户缓存 -->
     <cache name="userCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/>
@@ -34,6 +34,7 @@
             shiro默认使用shiro-activeSessionCache  这个缓存名
             如果不适用这个缓存名，就需要进行修改：sessionDAO.activeSessionsCacheName = myname
     -->
+    <!--
     <cache name="shiro-activeSessionCache"
            maxElementsInMemory="10000"
            overflowToDisk="true"
@@ -46,4 +47,5 @@
            maxElementsInMemory="1000"
            eternal="true"
            overflowToDisk="true"/>
+           -->
 </ehcache>

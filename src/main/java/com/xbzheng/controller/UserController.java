@@ -19,7 +19,7 @@ public class UserController {
 
     @RequestMapping("findAll.do")
     public String findAllUser(final Model model){
-        final List<User> userInfoList = userService.findAll();
+        final List<User> userInfoList = userService.findAll(null);
         model.addAttribute("userInfoList", userInfoList);
         LOG.debug("Find all user info successfully!");
        // return "user/user-list";

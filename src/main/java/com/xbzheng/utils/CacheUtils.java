@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by hun on 2015-07-21.
+ * @Created by hun on 2015-07-21.
  */
 public class CacheUtils {
     private static final Logger LOG = LoggerFactory.getLogger(CacheUtils.class);

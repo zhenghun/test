@@ -5,6 +5,7 @@
         <resultMap id="user" type="com.xbzheng.model.User">
                 <id property="id" column="id" />
                 <result property="userName" column="username"/>
+                <result property="password" column="password"/>
                 <result property="loginName" column="login_name"/>
                 <result property="loginFlag" column="login_flag"/>
         </resultMap>

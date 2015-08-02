@@ -58,9 +58,9 @@ public class FormAuthenticationFilterCustom extends FormAuthenticationFilter {
     }
 
     @Override
-    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
-        HttpServletRequest req = (HttpServletRequest)request;
-        HttpServletResponse res = (HttpServletResponse)response;
+    protected boolean onLoginSuccess(final AuthenticationToken token, final Subject subject, final ServletRequest request, final ServletResponse response) throws Exception {
+        final HttpServletRequest req = (HttpServletRequest)request;
+        final HttpServletResponse res = (HttpServletResponse)response;
         if(!"XMLHttpRequest".equalsIgnoreCase(((HttpServletRequest) request).getHeader("X-Requested-With"))|| req.getParameter("ajax") == null){
             res.sendRedirect(req.getContextPath()+this.getSuccessUrl());
         }else{

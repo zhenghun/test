@@ -313,7 +313,7 @@
       </build>
     </profile>
   </profiles>
-
+<!--
   <repositories>
     <repository>
       <id>sourceforge</id>
@@ -326,4 +326,5 @@
       </snapshots>
     </repository>
   </repositories>
+  -->
 </project>

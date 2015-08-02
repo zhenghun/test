@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 
 /**
- * Created by Administrator on 2015/7/27.
+ * @Created by Administrator on 2015/7/27.
  */
 public class Digests {
     private static final Logger LOGGER = LoggerFactory.getLogger(Digests.class);

@@ -1,6 +1,9 @@
 package com.xbzheng.model;
 
+import com.google.common.collect.Lists;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author hun
@@ -12,6 +15,8 @@ public class User implements Serializable{
     private String password;
     private String loginName;
     private String loginFlag;
+    private Role role;
+    private List<Role> roleList = Lists.newArrayList();
 
     public User(){
 
@@ -55,6 +60,22 @@ public class User implements Serializable{
 
     public void setLoginFlag(final String loginFlag) {
         this.loginFlag = loginFlag;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(final Role role) {
+        this.role = role;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(final List<Role> roleList) {
+        this.roleList = roleList;
     }
 
     @Override

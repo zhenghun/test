@@ -38,16 +38,16 @@ public class SystemService extends BaseService implements InitializingBean {
         return Encodes.encodeHex(salt)+Encodes.encodeHex(hasePassword);
     }
 
-    public static boolean validatePassword(String plainPassword, String password){
-        byte[] salt = Encodes.decodeHex(password.substring(0, 16));
-        byte[] hashPassword = Digests.sha1(plainPassword.getBytes(), salt, HASH_TIMES);
+    public static boolean validatePassword(final String plainPassword, final String password){
+        final byte[] salt = Encodes.decodeHex(password.substring(0, 16));
+        final byte[] hashPassword = Digests.sha1(plainPassword.getBytes(), salt, HASH_TIMES);
         return password.equals(Encodes.encodeHex(salt)+Encodes.encodeHex(hashPassword));
     }
 
     public static void main(String[] args){
         //System.out.println(encryptPassword("zhenghun"));
-        String password = "94822f696162754498d05a5bc23813b92ca29bb89d6f8ad4ba8388cf";
-        String planPassword = "zhenghun";
+        final String password = "94822f696162754498d05a5bc23813b92ca29bb89d6f8ad4ba8388cf";
+        final String planPassword = "zhenghun";
         System.out.println(validatePassword(planPassword, password));;
     }
 }

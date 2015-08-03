@@ -1,6 +1,7 @@
 package com.xbzheng.common.security.shiro.realm;
 
 import com.xbzheng.common.config.Global;
+import com.xbzheng.common.security.shiro.token.CredentialsMatcherCustom;
 import com.xbzheng.common.security.shiro.token.UsernamePasswordTokenCustom;
 import com.xbzheng.common.service.SystemService;
 import com.xbzheng.model.User;
@@ -64,9 +65,18 @@ public class MysqlRealm  extends AuthorizingRealm{
                 throw new AuthenticationException("msg:该已帐号禁止登录.");
             }
             final byte[] salt = Encodes.decodeHex(user.getPassword().substring(0, 16));
-            return new SimpleAuthenticationInfo(new Principal(user),user.getPassword().substring(16), ByteSource.Util.bytes(salt), getName());
+            return new SimpleAuthenticationInfo(new Principal(user),user.getPassword(), ByteSource.Util.bytes(salt), getName());
         }
         return null;
+    }
+
+    /**
+     * 使用自定义密码匹配
+     */
+    @PostConstruct
+    public void initCredentialsMatcher(){
+        final CredentialsMatcherCustom matcher = new CredentialsMatcherCustom();
+        setCredentialsMatcher(matcher);
     }
 
     public static class Principal implements Serializable{
@@ -112,15 +122,5 @@ public class MysqlRealm  extends AuthorizingRealm{
             systemService = SpringContextHolder.getBean(SystemService.class);
         }
         return systemService;
-    }
-
-    /**
-     * 设定密码校验的Hash算法与迭代次数
-     */
-    @PostConstruct
-    public void initCredentialsMatcher(){
-        final HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(SystemService.HASH_ALGORITHM);
-        matcher.setHashIterations(SystemService.HASH_TIMES);
-        setCredentialsMatcher(matcher);
     }
 }
